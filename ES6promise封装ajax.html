@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>ES6promise封装ajax</title>
+	</head>
+	<body>
+		<script>
+			// 通过回调来做 成功、失败处理
+			// 1、创建对象
+			// const xhr = new XMLHttpRequest();
+			// // 2、初始化
+			// xhr.open("GET","https://api.apiopen.top/get");
+			// // 3.发送
+			// xhr.send();
+			// // 4、绑定事件，处理响应结果
+			// xhr.onreadystatechange = function(){
+			// 	if(xhr.readyState === 4){
+			// 		if(xhr.status >= 200 && xhr.status < 300){
+			// 			console.log(xhr.response);
+			// 		}else{
+			// 			console.error(xhr.status);
+			// 		}
+			// 	}
+			// }
+
+			// 用promise来封装，在异步任务之后通过then做成功、失败处理，代码结构更清晰，避免回调地狱的问题
+			// 1、创建对象
+			const p = new Promise((resolve, reject) => {
+				const xhr = new XMLHttpRequest();
+				// 2、初始化
+				xhr.open("GET", "https://api.apiopen.top/getJoke");
+				// 3.发送
+				xhr.send();
+				// 4、绑定事件，处理响应结果
+				xhr.onreadystatechange = function() {
+					if (xhr.readyState === 4) {
+						if (xhr.status >= 200 && xhr.status < 300) {
+							resolve(xhr.response);
+						} else {
+							reject(xhr.status);
+						}
+					}
+				}
+			})
+			
+			// 指定成功/失败回调
+			p.then(value => {
+				console.log(value)
+			}),reason => {
+				console.error(reason)
+			}
+		</script>
+	</body>
+</html>
