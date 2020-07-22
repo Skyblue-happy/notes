@@ -14,6 +14,7 @@
 			</ul>
 		</div>
 		<script>
+			// Object.fromEntries：键值对列表转换为一个对象
 			const m = new Map();
 			m.set('name','tony');
 			const result = Object.fromEntries(m);
@@ -26,6 +27,14 @@
 			
 			const obj = Object.fromEntries(entries);
 			console.log(obj);
+			
+			// Object.entries（）：对象转换为键值对列表
+			const obj2 = Object.entries({
+				name:'xiaoming',
+				age:20,
+				from:'zhejiang'
+			})
+			console.log(obj2)
 		</script>
 	</body>
 </html>
