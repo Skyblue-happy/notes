@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div>
+			<h6>2020/07/22 周三</h6>
+			<ul>
+				<li>dotAll模式</li>
+				<li>dotAll 属性表明是否在正则表达式中一起使用"s"修饰符（引入/s修饰符，使得.可以匹配任意单个字符）</li>
+			</ul>
+		</div>
+		<script>
+			// 声明模板字符串
+			let str =
+				`
+			<ul>
+				<li>
+					<a>语文</a>
+					<p>时间：九月</p>
+				</li>
+				<li>
+					<a>数学</a>
+					<p>时间：十月</p>
+				</li>
+			</ul>
+			`;
+			
+			// /./s  模式修饰符s，加完s之后.可以匹配任意字符
+			// g表示全局匹配
+			const reg = /<li>.*?<a>(.*?)<\/a>.*?<p>(.*?)<\/p>/gs;
+			let result;
+			let data = [];
+			// 匹配不到的结果是null
+			while(result = reg.exec(str)){
+				// console.log(result)
+				data.push({title:result[1],time:result[2]});
+			}
+			
+			console.log(data)
+		</script>
+	</body>
+</html>
