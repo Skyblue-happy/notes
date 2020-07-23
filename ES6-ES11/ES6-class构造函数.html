@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>ES5-class构造函数</title>
+	</head>
+	<body>
+		<div>
+			<h4>2020/07/20 周一</h4>
+			<ul>
+				<li>静态方法调用直接在类上进行，不能在类的实例上调用。</li>
+			</ul>
+		</div>
+		<script>
+			class Phone{
+				constructor(brand,price) {
+				    this.brand = brand;
+					this.price = price;
+				}
+				// 方法必须要使用该语法，不能使用ES5的对象完整形式
+				duanxin(){
+					console.log('我可以发短信')
+				}
+				static game(){
+					console.log('我可以用来打游戏')
+				}
+			}
+			let xiaomi = new Phone('小米',1999);
+			console.log(Phone.game)
+			console.log(xiaomi.game)
+		</script>
+	</body>
+</html>
